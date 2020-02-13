@@ -14,7 +14,7 @@ function flat<T>(arr: any[]): T[] {
   let res = []
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].constructor === Array) {
-      res.push(...flat(arr[i]))
+      res.push(...arr[i])
     } else {
       res.push(arr[i])
     }
@@ -117,7 +117,7 @@ class Logger {
     console.dirxml(value)
   }
   error(...message: any[]) {
-    console.error(this.format(this.config.error, message))
+    console.log(...this.format(this.config.error, message))
   }
   group(...message: any[]) {
     console.group(...this.format(this.config.group, message))
@@ -141,7 +141,7 @@ class Logger {
     console.timeStamp(label)
   }
   trace(...message: any[]) {
-    console.log(...this.format(this.config.trace, message))
+    console.trace(...this.format(this.config.trace, message))
   }
   warn(...message: any[]) {
     console.log(...this.format(this.config.warn, message))
@@ -152,7 +152,7 @@ function genaricLog(type: string): LoggedFunctionConfig {
   return {
     pre: Logger.prototype.banner(
       <LoggerBannerSegment>{ content: 'ians-logger' },
-      <LoggerBannerSegment>{ content: type, backgroundColor: 'red' }
+      <LoggerBannerSegment>{ content: type, backgroundColor: 'gray' }
     )
   }
 }
@@ -161,7 +161,7 @@ DefaultConfig = {
   warn: {
     pre: Logger.prototype.banner(
       <LoggerBannerSegment>{ content: 'ians-logger' },
-      <LoggerBannerSegment>{ content: 'error', backgroundColor: 'rgb(207, 162, 0)' }
+      <LoggerBannerSegment>{ content: 'warn', backgroundColor: 'rgb(207, 162, 0)' }
     )
   },
 
@@ -182,7 +182,7 @@ DefaultConfig = {
   log: {
     pre: Logger.prototype.banner(
       <LoggerBannerSegment>{ content: 'ians-logger' },
-      <LoggerBannerSegment>{ content: 'error', backgroundColor: 'gray' }
+      <LoggerBannerSegment>{ content: 'log', backgroundColor: 'gray' }
     )
   }
 }

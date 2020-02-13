@@ -1,18 +1,22 @@
 {
   "name": "ians-logger",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "version": "0.0.1",
+  "description": "a logger for the browser to make things pretty",
+  "keywords": [
+    "browser",
+    "logger",
+    "configurable"
+  ],
   "main": "dist/ians-logger.umd.js",
   "module": "dist/ians-logger.es5.js",
   "typings": "dist/types/ians-logger.d.ts",
   "files": [
     "dist"
   ],
-  "author": " <>",
+  "author": "ian senne",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/IanSSenne/ians-logger/"
   },
   "license": "MIT",
   "engines": {

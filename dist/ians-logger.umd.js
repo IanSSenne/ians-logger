@@ -152,7 +152,7 @@
 	    var res = [];
 	    for (var i = 0; i < arr.length; i++) {
 	        if (arr[i].constructor === Array) {
-	            res.push.apply(res, flat(arr[i]));
+	            res.push.apply(res, arr[i]);
 	        }
 	        else {
 	            res.push(arr[i]);
@@ -267,7 +267,7 @@
 	        for (var _i = 0; _i < arguments.length; _i++) {
 	            message[_i] = arguments[_i];
 	        }
-	        console.error(this.format(this.config.error, message));
+	        console.log.apply(console, this.format(this.config.error, message));
 	    };
 	    Logger.prototype.group = function () {
 	        var message = [];
@@ -311,7 +311,7 @@
 	        for (var _i = 0; _i < arguments.length; _i++) {
 	            message[_i] = arguments[_i];
 	        }
-	        console.log.apply(console, this.format(this.config.trace, message));
+	        console.trace.apply(console, this.format(this.config.trace, message));
 	    };
 	    Logger.prototype.warn = function () {
 	        var message = [];
@@ -324,13 +324,13 @@
 	}());
 	function genaricLog(type) {
 	    return {
-	        pre: Logger.prototype.banner({ content: 'ians-logger' }, { content: type, backgroundColor: 'red' })
+	        pre: Logger.prototype.banner({ content: 'ians-logger' }, { content: type, backgroundColor: 'gray' })
 	    };
 	}
 	DefaultConfig = {
 	    trace: genaricLog('trace'),
 	    warn: {
-	        pre: Logger.prototype.banner({ content: 'ians-logger' }, { content: 'error', backgroundColor: 'rgb(207, 162, 0)' })
+	        pre: Logger.prototype.banner({ content: 'ians-logger' }, { content: 'warn', backgroundColor: 'rgb(207, 162, 0)' })
 	    },
 	    timeStamp: undefined,
 	    assert: genaricLog('assert'),
@@ -344,7 +344,7 @@
 	    groupCollapsed: genaricLog('groupCollapsed'),
 	    info: genaricLog('info'),
 	    log: {
-	        pre: Logger.prototype.banner({ content: 'ians-logger' }, { content: 'error', backgroundColor: 'gray' })
+	        pre: Logger.prototype.banner({ content: 'ians-logger' }, { content: 'log', backgroundColor: 'gray' })
 	    }
 	};
 	var iansLogger = new Logger(DefaultConfig);
