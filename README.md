@@ -13,4 +13,4 @@ Logger.warn('this is a warn', 1, {}, [])
 Logger.error('this is a error', 1, {}, [])
 ```
 
-![preview of base Logger commands](/preview.png)
+![preview of base Logger commands](./preview.png)
