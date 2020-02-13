@@ -1,6 +1,6 @@
 # ians-logger
 
-[docs](http://iansenne.com/ians-logger/docs)
+[docs](http://iansenne.com/ians-logger/)
 
 ```javascript
 import Logger from 'ians-logger'

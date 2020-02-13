@@ -1,6 +1,6 @@
 {
   "name": "ians-logger",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "a logger for the browser to make things pretty",
   "keywords": [
     "browser",

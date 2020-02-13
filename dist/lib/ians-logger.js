@@ -185,6 +185,33 @@ var Logger = /** @class */ (function () {
         }
         console.log.apply(console, this.format(this.config.warn, message));
     };
+    Logger.prototype.createLoggerFromName = function (name) {
+        function genaricLog(type) {
+            return {
+                pre: Logger.prototype.banner({ content: name }, { content: type, backgroundColor: 'gray' })
+            };
+        }
+        return new Logger({
+            trace: genaricLog('trace'),
+            warn: {
+                pre: Logger.prototype.banner({ content: name }, { content: 'warn', backgroundColor: 'rgb(207, 162, 0)' })
+            },
+            timeStamp: undefined,
+            assert: genaricLog('assert'),
+            count: genaricLog('count'),
+            debug: genaricLog('debug'),
+            dir: genaricLog('dir'),
+            error: {
+                pre: Logger.prototype.banner({ content: name }, { content: 'error', backgroundColor: 'rgb(190, 0, 0)' })
+            },
+            group: genaricLog('group'),
+            groupCollapsed: genaricLog('groupCollapsed'),
+            info: genaricLog('info'),
+            log: {
+                pre: Logger.prototype.banner({ content: name }, { content: 'log', backgroundColor: 'gray' })
+            }
+        });
+    };
     return Logger;
 }());
 function genaricLog(type) {

@@ -21,6 +21,7 @@ declare class Logger {
     timeStamp(label: string): void;
     trace(...message: any[]): void;
     warn(...message: any[]): void;
+    createLoggerFromName(name: string): Logger;
 }
 declare const _default: Logger;
 export default _default;

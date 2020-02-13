@@ -146,6 +146,46 @@ class Logger {
   warn(...message: any[]) {
     console.log(...this.format(this.config.warn, message))
   }
+  createLoggerFromName(name: string) {
+    function genaricLog(type: string): LoggedFunctionConfig {
+      return {
+        pre: Logger.prototype.banner(
+          <LoggerBannerSegment>{ content: name },
+          <LoggerBannerSegment>{ content: type, backgroundColor: 'gray' }
+        )
+      }
+    }
+    return new Logger({
+      trace: genaricLog('trace'),
+      warn: {
+        pre: Logger.prototype.banner(
+          <LoggerBannerSegment>{ content: name },
+          <LoggerBannerSegment>{ content: 'warn', backgroundColor: 'rgb(207, 162, 0)' }
+        )
+      },
+
+      timeStamp: undefined,
+      assert: genaricLog('assert'),
+      count: genaricLog('count'),
+      debug: genaricLog('debug'),
+      dir: genaricLog('dir'),
+      error: {
+        pre: Logger.prototype.banner(
+          <LoggerBannerSegment>{ content: name },
+          <LoggerBannerSegment>{ content: 'error', backgroundColor: 'rgb(190, 0, 0)' }
+        )
+      },
+      group: genaricLog('group'),
+      groupCollapsed: genaricLog('groupCollapsed'),
+      info: genaricLog('info'),
+      log: {
+        pre: Logger.prototype.banner(
+          <LoggerBannerSegment>{ content: name },
+          <LoggerBannerSegment>{ content: 'log', backgroundColor: 'gray' }
+        )
+      }
+    })
+  }
 }
 
 function genaricLog(type: string): LoggedFunctionConfig {
