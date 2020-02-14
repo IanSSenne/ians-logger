@@ -7,17 +7,25 @@ export interface LoggerBannerSegment {
   backgroundColor?: string
   css?: string
 }
+export interface NodeLoggedFunctionConfig {
+  pre: string
+  styles: Function[]
+}
+export interface NodeLoggerBannerSegment {
+  content: string
+  styles: Function[]
+}
 export interface LoggerConfig {
   timeStamp?: Function
-  assert: LoggedFunctionConfig
-  count: LoggedFunctionConfig
-  debug: LoggedFunctionConfig
-  dir: LoggedFunctionConfig
-  error: LoggedFunctionConfig
-  group: LoggedFunctionConfig
-  groupCollapsed: LoggedFunctionConfig
-  info: LoggedFunctionConfig
-  log: LoggedFunctionConfig
-  trace: LoggedFunctionConfig
-  warn: LoggedFunctionConfig
+  assert: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  count: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  debug: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  dir: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  error: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  group: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  groupCollapsed: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  info: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  log: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  trace: LoggedFunctionConfig | NodeLoggedFunctionConfig
+  warn: LoggedFunctionConfig | NodeLoggedFunctionConfig
 }

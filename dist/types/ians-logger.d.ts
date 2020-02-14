@@ -1,13 +1,15 @@
-import { LoggerConfig, LoggedFunctionConfig, LoggerBannerSegment } from './ians-logger-types';
+import { colors as NodeColors } from './node';
+import { LoggerConfig, LoggerBannerSegment, NodeLoggerBannerSegment } from './ians-logger-types';
 declare class Logger {
     config: LoggerConfig;
+    colors: typeof NodeColors | undefined;
     constructor(fullConfig: LoggerConfig);
-    banner(...segments: LoggerBannerSegment[]): string[];
+    banner(...segments: (LoggerBannerSegment | NodeLoggerBannerSegment)[]): string[];
     createLogger(config: LoggerConfig): Logger;
-    format(conf: LoggedFunctionConfig, args: string[]): string[];
+    private format;
     assert(assertion: any, ...message: any[]): void;
     count(label: string): void;
-    countReset(): void;
+    countReset(label: string): void;
     debug(...message: any[]): void;
     dir(...message: any[]): void;
     dirxml(value: any): void;
