@@ -1,9 +1,12 @@
 import { colors as NodeColors } from './node';
 import { LoggerConfig, LoggerBannerSegment, NodeLoggerBannerSegment } from './ians-logger-types';
 declare class Logger {
-    config: LoggerConfig;
+    private config;
     colors: typeof NodeColors | undefined;
+    private enabled;
     constructor(fullConfig: LoggerConfig);
+    enable(): void;
+    disable(): void;
     banner(...segments: (LoggerBannerSegment | NodeLoggerBannerSegment)[]): string[];
     createLogger(config: LoggerConfig): Logger;
     private format;

@@ -1,4 +1,5 @@
 import deepmerge from 'deepmerge'
+
 import { colors as NodeColors, isNode } from './node'
 const envIsNode = isNode()
 // console.log(
@@ -13,6 +14,9 @@ import {
   NodeLoggedFunctionConfig
 } from './ians-logger-types'
 let DefaultConfig: LoggerConfig
+/**
+ * @ignore
+ */
 function flat(arr: any) {
   let res = []
   for (let i = 0; i < arr.length; i++) {
@@ -25,13 +29,20 @@ function flat(arr: any) {
   return res
 }
 class Logger {
-  config: LoggerConfig
-  colors: typeof NodeColors | undefined
+  private config: LoggerConfig
+  public colors: typeof NodeColors | undefined
+  private enabled: boolean = true
   constructor(fullConfig: LoggerConfig) {
     this.config = fullConfig
     if (envIsNode) {
       this.colors = NodeColors
     }
+  }
+  public enable() {
+    this.enabled = true
+  }
+  public disable() {
+    this.enabled = false
   }
   public banner(...segments: (LoggerBannerSegment | NodeLoggerBannerSegment)[]): string[] {
     if (envIsNode) {
@@ -133,97 +144,184 @@ class Logger {
     }
   }
   assert(assertion: any, ...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     if (!assertion) {
       console.log(...this.format(this.config.assert, flat(['Assertion failed:', message])))
     }
   }
   count(label: string) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.count(label)
   }
   countReset(label: string) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.countReset(label)
   }
   debug(...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.debug(...this.format(this.config.debug, message))
   }
   dir(...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.dir(...this.format(this.config.dir, message))
   }
   dirxml(value: any) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.dirxml(value)
   }
   error(...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.log(...this.format(this.config.error, message))
   }
   group(...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.group(...this.format(this.config.group, message))
   }
   groupCollapsed(...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.groupCollapsed(...this.format(this.config.groupCollapsed, message))
   }
   info(...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.info(...this.format(this.config.info, message))
   }
   log(...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.log(...this.format(this.config.log, message))
   }
   time(label: string) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.time(label)
   }
   timeEnd(label: string) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.timeEnd(label)
   }
   timeStamp(label: string) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.timeStamp(label)
   }
   trace(...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.trace(...this.format(this.config.trace, message))
   }
   warn(...message: any[]) {
+    if (!this.enabled) return //logger is disabled. exit early.
     console.log(...this.format(this.config.warn, message))
   }
   createLoggerFromName(name: string) {
-    function genericLog(type: string): LoggedFunctionConfig {
-      return {
-        pre: Logger.prototype.banner(
-          <LoggerBannerSegment>{ content: name },
-          <LoggerBannerSegment>{ content: type, backgroundColor: 'gray' }
-        )
+    function genaricLog(type: string): LoggedFunctionConfig | NodeLoggedFunctionConfig {
+      if (envIsNode) {
+        return {
+          pre: Logger.prototype.banner(
+            <NodeLoggerBannerSegment>{
+              content: name,
+              styles: [NodeColors.black, NodeColors.bgWhite]
+            },
+            <NodeLoggerBannerSegment>{
+              content: type,
+              styles: [NodeColors.white, NodeColors.bgGray]
+            }
+          ),
+          styles: new Array<Function>()
+        }
+      } else {
+        return <LoggedFunctionConfig>{
+          pre: Logger.prototype.banner(
+            <LoggerBannerSegment>{ content: name },
+            <LoggerBannerSegment>{ content: type, backgroundColor: 'gray' }
+          )
+        }
       }
     }
-    return new Logger({
-      trace: genericLog('trace'),
-      warn: {
-        pre: Logger.prototype.banner(
-          <LoggerBannerSegment>{ content: name },
-          <LoggerBannerSegment>{ content: 'warn', backgroundColor: 'rgb(207, 162, 0)' }
-        )
-      },
+    let UsedConfig = {}
+    if (envIsNode) {
+      UsedConfig = {
+        trace: genaricLog('trace'),
+        warn: {
+          pre: Logger.prototype.banner(
+            <NodeLoggerBannerSegment>{
+              content: name,
+              styles: [NodeColors.black, NodeColors.bgWhite]
+            },
+            <NodeLoggerBannerSegment>{
+              content: 'warn',
+              styles: [NodeColors.white, NodeColors.bgYellow]
+            }
+          )
+        },
 
-      timeStamp: undefined,
-      assert: genericLog('assert'),
-      count: genericLog('count'),
-      debug: genericLog('debug'),
-      dir: genericLog('dir'),
-      error: {
-        pre: Logger.prototype.banner(
-          <LoggerBannerSegment>{ content: name },
-          <LoggerBannerSegment>{ content: 'error', backgroundColor: 'rgb(190, 0, 0)' }
-        )
-      },
-      group: genericLog('group'),
-      groupCollapsed: genericLog('groupCollapsed'),
-      info: genericLog('info'),
-      log: {
-        pre: Logger.prototype.banner(
-          <LoggerBannerSegment>{ content: name },
-          <LoggerBannerSegment>{ content: 'log', backgroundColor: 'gray' }
-        )
+        timeStamp: undefined,
+        assert: genaricLog('assert'),
+        count: genaricLog('count'),
+        debug: genaricLog('debug'),
+        dir: genaricLog('dir'),
+        error: {
+          pre: Logger.prototype.banner(
+            <NodeLoggerBannerSegment>{
+              content: name,
+              styles: [NodeColors.black, NodeColors.bgWhite]
+            },
+            <NodeLoggerBannerSegment>{
+              content: 'error',
+              styles: [NodeColors.white, NodeColors.bgRed]
+            }
+          )
+        },
+        group: genaricLog('group'),
+        groupCollapsed: genaricLog('groupCollapsed'),
+        info: genaricLog('info'),
+        log: {
+          pre: Logger.prototype.banner(
+            <NodeLoggerBannerSegment>{
+              content: name,
+              styles: [NodeColors.black, NodeColors.bgWhite]
+            },
+            <NodeLoggerBannerSegment>{
+              content: 'log',
+              styles: [NodeColors.white, NodeColors.bgGray]
+            }
+          )
+        }
       }
-    })
+    } else {
+      UsedConfig = {
+        trace: genaricLog('trace'),
+        warn: {
+          pre: Logger.prototype.banner(
+            <LoggerBannerSegment>{ content: name },
+            <LoggerBannerSegment>{ content: 'warn', backgroundColor: 'rgb(207, 162, 0)' }
+          )
+        },
+
+        timeStamp: undefined,
+        assert: genaricLog('assert'),
+        count: genaricLog('count'),
+        debug: genaricLog('debug'),
+        dir: genaricLog('dir'),
+        error: {
+          pre: Logger.prototype.banner(
+            <LoggerBannerSegment>{ content: name },
+            <LoggerBannerSegment>{ content: 'error', backgroundColor: 'rgb(190, 0, 0)' }
+          )
+        },
+        group: genaricLog('group'),
+        groupCollapsed: genaricLog('groupCollapsed'),
+        info: genaricLog('info'),
+        log: {
+          pre: Logger.prototype.banner(
+            <LoggerBannerSegment>{ content: name },
+            <LoggerBannerSegment>{ content: 'log', backgroundColor: 'gray' }
+          )
+        }
+      }
+    }
+    return new Logger(<LoggerConfig>UsedConfig)
   }
 }
-
+/**
+ * @ignore
+ */
 function genaricLog(type: string): LoggedFunctionConfig | NodeLoggedFunctionConfig {
   if (envIsNode) {
     return {

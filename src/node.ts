@@ -1,3 +1,6 @@
+/**
+ * @ignore
+ */
 function makeColor(opening: number, closing: number) {
   const func = function(msg: string) {
     return `\u001b[${opening}m${msg}\u001b[${closing}m`

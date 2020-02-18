@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @ignore
+ */
 function makeColor(opening, closing) {
     var func = function (msg) {
         return "\u001B[" + opening + "m" + msg + "\u001B[" + closing + "m";

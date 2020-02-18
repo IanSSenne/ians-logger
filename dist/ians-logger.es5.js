@@ -130,6 +130,9 @@ var deepmerge_1 = deepmerge;
 
 var cjs = deepmerge_1;
 
+/**
+ * @ignore
+ */
 function makeColor(opening, closing) {
     var func = function (msg) {
         return "\u001B[" + opening + "m" + msg + "\u001B[" + closing + "m";
@@ -201,6 +204,9 @@ function isNode() {
 
 var envIsNode = isNode();
 var DefaultConfig;
+/**
+ * @ignore
+ */
 function flat(arr) {
     var res = [];
     for (var i = 0; i < arr.length; i++) {
@@ -215,11 +221,18 @@ function flat(arr) {
 }
 var Logger = /** @class */ (function () {
     function Logger(fullConfig) {
+        this.enabled = true;
         this.config = fullConfig;
         if (envIsNode) {
             this.colors = colors;
         }
     }
+    Logger.prototype.enable = function () {
+        this.enabled = true;
+    };
+    Logger.prototype.disable = function () {
+        this.enabled = false;
+    };
     Logger.prototype.banner = function () {
         var segments = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -326,14 +339,20 @@ var Logger = /** @class */ (function () {
         for (var _i = 1; _i < arguments.length; _i++) {
             message[_i - 1] = arguments[_i];
         }
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
         if (!assertion) {
             console.log.apply(console, this.format(this.config.assert, flat(['Assertion failed:', message])));
         }
     };
     Logger.prototype.count = function (label) {
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
         console.count(label);
     };
     Logger.prototype.countReset = function (label) {
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
         console.countReset(label);
     };
     Logger.prototype.debug = function () {
@@ -341,16 +360,24 @@ var Logger = /** @class */ (function () {
         for (var _i = 0; _i < arguments.length; _i++) {
             message[_i] = arguments[_i];
         }
-        console.debug.apply(console, this.format(this.config.debug, message));
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
+        console.debug.apply(//logger is disabled. exit early.
+        console, this.format(this.config.debug, message));
     };
     Logger.prototype.dir = function () {
         var message = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             message[_i] = arguments[_i];
         }
-        console.dir.apply(console, this.format(this.config.dir, message));
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
+        console.dir.apply(//logger is disabled. exit early.
+        console, this.format(this.config.dir, message));
     };
     Logger.prototype.dirxml = function (value) {
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
         console.dirxml(value);
     };
     Logger.prototype.error = function () {
@@ -358,43 +385,64 @@ var Logger = /** @class */ (function () {
         for (var _i = 0; _i < arguments.length; _i++) {
             message[_i] = arguments[_i];
         }
-        console.log.apply(console, this.format(this.config.error, message));
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
+        console.log.apply(//logger is disabled. exit early.
+        console, this.format(this.config.error, message));
     };
     Logger.prototype.group = function () {
         var message = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             message[_i] = arguments[_i];
         }
-        console.group.apply(console, this.format(this.config.group, message));
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
+        console.group.apply(//logger is disabled. exit early.
+        console, this.format(this.config.group, message));
     };
     Logger.prototype.groupCollapsed = function () {
         var message = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             message[_i] = arguments[_i];
         }
-        console.groupCollapsed.apply(console, this.format(this.config.groupCollapsed, message));
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
+        console.groupCollapsed.apply(//logger is disabled. exit early.
+        console, this.format(this.config.groupCollapsed, message));
     };
     Logger.prototype.info = function () {
         var message = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             message[_i] = arguments[_i];
         }
-        console.info.apply(console, this.format(this.config.info, message));
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
+        console.info.apply(//logger is disabled. exit early.
+        console, this.format(this.config.info, message));
     };
     Logger.prototype.log = function () {
         var message = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             message[_i] = arguments[_i];
         }
-        console.log.apply(console, this.format(this.config.log, message));
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
+        console.log.apply(//logger is disabled. exit early.
+        console, this.format(this.config.log, message));
     };
     Logger.prototype.time = function (label) {
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
         console.time(label);
     };
     Logger.prototype.timeEnd = function (label) {
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
         console.timeEnd(label);
     };
     Logger.prototype.timeStamp = function (label) {
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
         console.timeStamp(label);
     };
     Logger.prototype.trace = function () {
@@ -402,44 +450,111 @@ var Logger = /** @class */ (function () {
         for (var _i = 0; _i < arguments.length; _i++) {
             message[_i] = arguments[_i];
         }
-        console.trace.apply(console, this.format(this.config.trace, message));
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
+        console.trace.apply(//logger is disabled. exit early.
+        console, this.format(this.config.trace, message));
     };
     Logger.prototype.warn = function () {
         var message = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             message[_i] = arguments[_i];
         }
-        console.log.apply(console, this.format(this.config.warn, message));
+        if (!this.enabled)
+            return; //logger is disabled. exit early.
+        console.log.apply(//logger is disabled. exit early.
+        console, this.format(this.config.warn, message));
     };
     Logger.prototype.createLoggerFromName = function (name) {
-        function genericLog(type) {
-            return {
-                pre: Logger.prototype.banner({ content: name }, { content: type, backgroundColor: 'gray' })
+        function genaricLog(type) {
+            if (envIsNode) {
+                return {
+                    pre: Logger.prototype.banner({
+                        content: name,
+                        styles: [colors.black, colors.bgWhite]
+                    }, {
+                        content: type,
+                        styles: [colors.white, colors.bgGray]
+                    }),
+                    styles: new Array()
+                };
+            }
+            else {
+                return {
+                    pre: Logger.prototype.banner({ content: name }, { content: type, backgroundColor: 'gray' })
+                };
+            }
+        }
+        var UsedConfig = {};
+        if (envIsNode) {
+            UsedConfig = {
+                trace: genaricLog('trace'),
+                warn: {
+                    pre: Logger.prototype.banner({
+                        content: name,
+                        styles: [colors.black, colors.bgWhite]
+                    }, {
+                        content: 'warn',
+                        styles: [colors.white, colors.bgYellow]
+                    })
+                },
+                timeStamp: undefined,
+                assert: genaricLog('assert'),
+                count: genaricLog('count'),
+                debug: genaricLog('debug'),
+                dir: genaricLog('dir'),
+                error: {
+                    pre: Logger.prototype.banner({
+                        content: name,
+                        styles: [colors.black, colors.bgWhite]
+                    }, {
+                        content: 'error',
+                        styles: [colors.white, colors.bgRed]
+                    })
+                },
+                group: genaricLog('group'),
+                groupCollapsed: genaricLog('groupCollapsed'),
+                info: genaricLog('info'),
+                log: {
+                    pre: Logger.prototype.banner({
+                        content: name,
+                        styles: [colors.black, colors.bgWhite]
+                    }, {
+                        content: 'log',
+                        styles: [colors.white, colors.bgGray]
+                    })
+                }
             };
         }
-        return new Logger({
-            trace: genericLog('trace'),
-            warn: {
-                pre: Logger.prototype.banner({ content: name }, { content: 'warn', backgroundColor: 'rgb(207, 162, 0)' })
-            },
-            timeStamp: undefined,
-            assert: genericLog('assert'),
-            count: genericLog('count'),
-            debug: genericLog('debug'),
-            dir: genericLog('dir'),
-            error: {
-                pre: Logger.prototype.banner({ content: name }, { content: 'error', backgroundColor: 'rgb(190, 0, 0)' })
-            },
-            group: genericLog('group'),
-            groupCollapsed: genericLog('groupCollapsed'),
-            info: genericLog('info'),
-            log: {
-                pre: Logger.prototype.banner({ content: name }, { content: 'log', backgroundColor: 'gray' })
-            }
-        });
+        else {
+            UsedConfig = {
+                trace: genaricLog('trace'),
+                warn: {
+                    pre: Logger.prototype.banner({ content: name }, { content: 'warn', backgroundColor: 'rgb(207, 162, 0)' })
+                },
+                timeStamp: undefined,
+                assert: genaricLog('assert'),
+                count: genaricLog('count'),
+                debug: genaricLog('debug'),
+                dir: genaricLog('dir'),
+                error: {
+                    pre: Logger.prototype.banner({ content: name }, { content: 'error', backgroundColor: 'rgb(190, 0, 0)' })
+                },
+                group: genaricLog('group'),
+                groupCollapsed: genaricLog('groupCollapsed'),
+                info: genaricLog('info'),
+                log: {
+                    pre: Logger.prototype.banner({ content: name }, { content: 'log', backgroundColor: 'gray' })
+                }
+            };
+        }
+        return new Logger(UsedConfig);
     };
     return Logger;
 }());
+/**
+ * @ignore
+ */
 function genaricLog(type) {
     if (envIsNode) {
         return {

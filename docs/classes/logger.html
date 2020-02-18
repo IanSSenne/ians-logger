@@ -918,8 +918,11 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="logger.html#colors" class="tsd-kind-icon">colors</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-class">
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a href="logger.html#config" class="tsd-kind-icon">config</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a href="logger.html#enabled" class="tsd-kind-icon">enabled</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="logger.html#assert" class="tsd-kind-icon">assert</a>
@@ -947,6 +950,12 @@ img { max-width: 100%; }
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="logger.html#dirxml" class="tsd-kind-icon">dirxml</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="logger.html#disable" class="tsd-kind-icon">disable</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="logger.html#enable" class="tsd-kind-icon">enable</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="logger.html#error" class="tsd-kind-icon">error</a>
@@ -1004,17 +1013,8 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-variable tsd-is-not-exported">
 			<a href="../globals.html#envisnode" class="tsd-kind-icon">env<wbr>IsNode</a>
 		</li>
-		<li class=" tsd-kind-function tsd-is-not-exported">
-			<a href="../globals.html#flat" class="tsd-kind-icon">flat</a>
-		</li>
-		<li class=" tsd-kind-function tsd-is-not-exported">
-			<a href="../globals.html#genariclog" class="tsd-kind-icon">genaric<wbr>Log</a>
-		</li>
 		<li class=" tsd-kind-function">
 			<a href="../globals.html#isnode" class="tsd-kind-icon">is<wbr>Node</a>
-		</li>
-		<li class=" tsd-kind-function tsd-is-not-exported">
-			<a href="../globals.html#makecolor" class="tsd-kind-icon">make<wbr>Color</a>
 		</li>
 		<li class=" tsd-kind-object-literal">
 			<a href="../globals.html#colors" class="tsd-kind-icon">colors</a>
@@ -1045,7 +1045,8 @@ img { max-width: 100%; }
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="logger.html#colors" class="tsd-kind-icon">colors</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-class"><a href="logger.html#config" class="tsd-kind-icon">config</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="logger.html#config" class="tsd-kind-icon">config</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="logger.html#enabled" class="tsd-kind-icon">enabled</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
@@ -1060,6 +1061,8 @@ img { max-width: 100%; }
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#debug" class="tsd-kind-icon">debug</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#dir" class="tsd-kind-icon">dir</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#dirxml" class="tsd-kind-icon">dirxml</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#disable" class="tsd-kind-icon">disable</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#enable" class="tsd-kind-icon">enable</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#error" class="tsd-kind-icon">error</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="logger.html#format" class="tsd-kind-icon">format</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#group" class="tsd-kind-icon">group</a></li>
@@ -1088,7 +1091,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L29">ians-logger.ts:29</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L34">ians-logger.ts:34</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1110,17 +1113,27 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">colors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L29">ians-logger.ts:29</a></li>
+						<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L33">ians-logger.ts:33</a></li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 				<a name="config" class="tsd-anchor"></a>
-				<h3>config</h3>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> config</h3>
 				<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <a href="../interfaces/loggerconfig.html" class="tsd-signature-type">LoggerConfig</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L28">ians-logger.ts:28</a></li>
+						<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L32">ians-logger.ts:32</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<a name="enabled" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> enabled</h3>
+				<div class="tsd-signature tsd-kind-icon">enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L34">ians-logger.ts:34</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1137,7 +1150,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L135">ians-logger.ts:135</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L146">ians-logger.ts:146</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1163,7 +1176,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L36">ians-logger.ts:36</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L47">ians-logger.ts:47</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1186,7 +1199,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L140">ians-logger.ts:140</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L152">ians-logger.ts:152</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1209,7 +1222,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L143">ians-logger.ts:143</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L156">ians-logger.ts:156</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1232,7 +1245,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L105">ians-logger.ts:105</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L116">ians-logger.ts:116</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1255,7 +1268,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L185">ians-logger.ts:185</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L212">ians-logger.ts:212</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1278,7 +1291,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L146">ians-logger.ts:146</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L160">ians-logger.ts:160</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1301,7 +1314,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L149">ians-logger.ts:149</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L164">ians-logger.ts:164</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1324,7 +1337,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L152">ians-logger.ts:152</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L168">ians-logger.ts:168</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1333,6 +1346,40 @@ img { max-width: 100%; }
 								<h5>value: <span class="tsd-signature-type">any</span></h5>
 							</li>
 						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="disable" class="tsd-anchor"></a>
+				<h3>disable</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">disable<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L44">ians-logger.ts:44</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="enable" class="tsd-anchor"></a>
+				<h3>enable</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">enable<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L41">ians-logger.ts:41</a></li>
+							</ul>
+						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 					</li>
 				</ul>
@@ -1347,7 +1394,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L155">ians-logger.ts:155</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L172">ians-logger.ts:172</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1370,7 +1417,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L110">ians-logger.ts:110</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L121">ians-logger.ts:121</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1396,7 +1443,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L158">ians-logger.ts:158</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L176">ians-logger.ts:176</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1419,7 +1466,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L161">ians-logger.ts:161</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L180">ians-logger.ts:180</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1442,7 +1489,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L164">ians-logger.ts:164</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L184">ians-logger.ts:184</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1465,7 +1512,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L167">ians-logger.ts:167</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L188">ians-logger.ts:188</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1488,7 +1535,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L170">ians-logger.ts:170</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L192">ians-logger.ts:192</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1511,7 +1558,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L173">ians-logger.ts:173</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L196">ians-logger.ts:196</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1534,7 +1581,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L176">ians-logger.ts:176</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L200">ians-logger.ts:200</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1557,7 +1604,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L179">ians-logger.ts:179</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L204">ians-logger.ts:204</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1580,7 +1627,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/ce9e728/src/ians-logger.ts#L182">ians-logger.ts:182</a></li>
+								<li>Defined in <a href="https://github.com/IanSSenne/ians-logger/blob/44eda28/src/ians-logger.ts#L208">ians-logger.ts:208</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
